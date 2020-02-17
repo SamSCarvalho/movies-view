@@ -1,9 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto criado por Samuel Carvalho.
 
-## Available Scripts
+## Desafio - Movie Cubos
 
-In the project directory, you can run:
-
+No diretório do projeto execute o comando abaixo para iniciar:
 ### `yarn start`
 
 Runs the app in the development mode.<br />
