@@ -17,41 +17,29 @@ class Home extends Component {
       movies: [],
       genres: [],
       page: 1,
-      pageApi: 1,
+      totalPages: 1,
     }
   }
 
   componentDidMount = async () => {
-    const movies = await searchMovies();
+    const { page } = this.state;
+    const movies = await searchMovies(page);
     console.log(movies)
     const genres = await getGenres();
     this.setState({
       movies: movies.results,
-      genres
+      genres,
+      totalPages: movies.total_pages
     });
   }
 
-
-  movieListPage = () => {
-    const { movies, page } = this.state;
-    let startIndex = 0;
-    let endIndex = NUMBER_RESULTS;
-    if (page > 1) {
-      startIndex = NUMBER_RESULTS * (page - 1);
-      endIndex = NUMBER_RESULTS * page;
-    }
-    const moviesList = movies.slice(startIndex, endIndex);
-    return moviesList;
-  }
-
   renderCardMovies = () => {
-    const { genres } = this.state;
+    const { genres, movies } = this.state;
     const moviesCard = [];
-    const movies = this.movieListPage();
     if (movies.length > 0) {
       movies.forEach(movie => {
         if (movie) {
-          const path = `${IMG_URL}${movie.poster_path}`;
+          const path = (movie.poster_path) ? `${IMG_URL}${movie.poster_path}` : undefined;
           const genresToMovie = genresFilter(movie.genre_ids, genres);
           moviesCard.push(
             <CardMovie
@@ -71,15 +59,24 @@ class Home extends Component {
     return moviesCard;
   }
 
+  getMoreMovies = async (page) => {
+    const movies = await searchMovies(page);
+    console.log(movies);
+    this.setState({
+      movies: movies.results
+    })
+  }
+
   changePage = async (page) => {
     this.setState({
       page
     });
+    await this.getMoreMovies(page);
     window.scrollTo(0, 0)
   }
 
   render() {
-    const { page } = this.state;
+    const { page, totalPages } = this.state;
     return (
       <div>
         <div className='list-movies-div'>
@@ -89,6 +86,7 @@ class Home extends Component {
           <Pagination
             changePage={this.changePage}
             value={page}
+            numberPages={totalPages}
           />
         </div>
       </div>

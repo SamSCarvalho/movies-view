@@ -43,11 +43,11 @@ export const getGenres = async () => {
   return genres;
 }
 
-export const searchMovies = async () => {
+export const searchMovies = async (page) => {
   const movies = await APIRequest('/search/movie', {
     params: {
-      query: 'Marvel',
-      page: 1,
+      query: 'Tropa de Elite',
+      page,
       language: 'pt-Br',
     }
   })

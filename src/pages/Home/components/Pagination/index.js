@@ -13,9 +13,9 @@ class Pagination extends Component {
   };
 
   render() {
-    const { value, changePage } = this.props;
+    const { value, changePage, numberPages } = this.props;
     const pages = []
-    for(let i=1; i<=5; i++){
+    for(let i=1; i<=numberPages; i++){
       if (i === value) {
         pages.push(
           <div key={i} className="page-selected">
