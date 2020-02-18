@@ -1,11 +1,11 @@
 import APIRequest from './client/movieApi';
 
-export const listMovies = async () => {
+export const getMovies = async (page) => {
   const movies = await APIRequest('/discover/movie/', {
     params: {
       sort_by: 'popularity.desc',
-      page: 1,
-      language: 'pt-Br'
+      page,
+      language: 'pt-Br',
     }
   })
   .then((response) => {
@@ -20,12 +20,40 @@ export const getMovie = async (id) => {
     params: {
       sort_by: 'popularity.desc',
       page: 1,
-      language: 'pt-Br'
+      language: 'pt-Br',
     }
   })
   .then((response) => {
     return response.data
   });
+
+  return movies;
+}
+
+export const getGenres = async () => {
+  const genres = await APIRequest('/genre/movie/list', {
+    params: {
+      language: 'pt-Br',
+    }
+  })
+  .then((response) => {
+    return response.data.genres;
+  })
+
+  return genres;
+}
+
+export const searchMovies = async () => {
+  const movies = await APIRequest('/search/movie', {
+    params: {
+      query: 'Marvel',
+      page: 1,
+      language: 'pt-Br',
+    }
+  })
+  .then((response) => {
+    return response.data;
+  })
 
   return movies;
 }
