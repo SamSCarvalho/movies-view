@@ -1,19 +1,6 @@
 import APIRequest from './client/movieApi';
-
-export const getMovies = async (page) => {
-  const movies = await APIRequest('/discover/movie/', {
-    params: {
-      sort_by: 'popularity.desc',
-      page,
-      language: 'pt-Br',
-    }
-  })
-  .then((response) => {
-    return response.data
-  });
-
-  return movies;
-}
+import genres from '../utils/genres';
+import { genreFilterByDescri } from '../utils/genresFilter';
 
 export const getMovie = async (id) => {
   const movies = await APIRequest(`/movie/${id}`, {
@@ -43,12 +30,14 @@ export const getGenres = async () => {
   return genres;
 }
 
-export const searchMovies = async (page) => {
+const searchMovies = async (page, value) => {
   const movies = await APIRequest('/search/movie', {
     params: {
-      query: 'Tropa de Elite',
+      query: value,
       page,
       language: 'pt-Br',
+      year: (Number(value)) ? Number(value) : undefined,
+      include_adult: false,
     }
   })
   .then((response) => {
@@ -56,4 +45,31 @@ export const searchMovies = async (page) => {
   })
 
   return movies;
+}
+
+const discoverMovies = async (page, value) => {
+  const movies = await APIRequest('/discover/movie/', {
+    params: {
+      sort_by: 'popularity.desc',
+      page,
+      language: 'pt-Br',
+      with_genres: value,
+      include_adult: false,
+    }
+  })
+  .then((response) => {
+    return response.data
+  });
+
+  return movies;
+}
+
+export const getMovies = async (page, value) => {
+  let result = null;
+  if (value) {
+    result = await searchMovies(page, value);
+  } else {
+    result = await discoverMovies(page);
+  }
+  return result;
 }

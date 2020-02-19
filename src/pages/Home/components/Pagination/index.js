@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { LIMITE_PAGE } from '../../../../constants/pagination';
+
 import '../../style.css';
 
 class Pagination extends Component {
@@ -13,8 +15,12 @@ class Pagination extends Component {
   };
 
   render() {
-    const { value, changePage, numberPages } = this.props;
+    const { value, changePage, numberPages: numberPagesProps } = this.props;
     const pages = []
+    let numberPages = numberPagesProps;
+    if (numberPages > LIMITE_PAGE) {
+      numberPages = LIMITE_PAGE;
+    }
     for(let i=1; i<=numberPages; i++){
       if (i === value) {
         pages.push(

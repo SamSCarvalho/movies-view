@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import history from '../../../../routes/history';
 import PropTypes from 'prop-types';
 
 import RatingScore from '../RatingScore';
@@ -43,6 +44,10 @@ class CardMovie extends Component {
     return tagsGenres;
   }
 
+  acessMovie = (id) => {
+    history.push(`/movie/${id}`)
+  }
+
   render() {
     const {
       movieId,
@@ -56,7 +61,7 @@ class CardMovie extends Component {
     const dateRelease = moment(date).format("DD/MM/YYYY");
 
     return (
-      <div className="card-movie" onClick={()=> {console.log(movieId)}}>
+      <div className="card-movie" onClick={()=> {this.acessMovie(movieId)}}>
         <div className="card-img">
           <img src={posterPath} alt={title} />
         </div>

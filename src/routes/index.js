@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
+import history from './history';
 
 // ERROR
 import Error404 from '../splashes/Error404';
@@ -8,8 +10,9 @@ import Error404 from '../splashes/Error404';
 import Home from '../pages/Home';
 import MovieDetails from '../pages/MovieDetails';
 
+
 const Routes = () => (
-  <Router>
+  <Router history={history}>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/movie/:id" component={MovieDetails} />

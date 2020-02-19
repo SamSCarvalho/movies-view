@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { IMG_URL } from '../../constants/api';
-import { NUMBER_RESULTS } from '../../constants/pagination';
 
 import CardMovie from './components/CardMovie';
 import Pagination from './components/Pagination';
+import SearchInput from '../../components/SearchInput';
 
-import { getGenres, searchMovies } from '../../services/movieService';
-import genresFilter from '../../utils/genresFilter';
+import { getMovies } from '../../services/movieService';
+
+import { genreFilterById } from '../../utils/genresFilter';
+import genres from '../../utils/genres';
 
 import './style.css';
 
@@ -15,32 +17,30 @@ class Home extends Component {
     super(props);
     this.state = {
       movies: [],
-      genres: [],
       page: 1,
       totalPages: 1,
+      filter: null,
     }
   }
 
   componentDidMount = async () => {
     const { page } = this.state;
-    const movies = await searchMovies(page);
+    const movies = await getMovies(page);
     console.log(movies)
-    const genres = await getGenres();
     this.setState({
       movies: movies.results,
-      genres,
       totalPages: movies.total_pages
     });
   }
 
   renderCardMovies = () => {
-    const { genres, movies } = this.state;
+    const { movies } = this.state;
     const moviesCard = [];
     if (movies.length > 0) {
       movies.forEach(movie => {
         if (movie) {
           const path = (movie.poster_path) ? `${IMG_URL}${movie.poster_path}` : undefined;
-          const genresToMovie = genresFilter(movie.genre_ids, genres);
+          const genresToMovie = genreFilterById(movie.genre_ids, genres);
           moviesCard.push(
             <CardMovie
               key={movie.id}
@@ -60,10 +60,23 @@ class Home extends Component {
   }
 
   getMoreMovies = async (page) => {
-    const movies = await searchMovies(page);
+    const { filter } = this.state;
+    const movies = await getMovies(page, filter);
     console.log(movies);
     this.setState({
       movies: movies.results
+    })
+  }
+
+  searchMovie = async (value) => {
+    const { page } = this.state;
+    const movies = await getMovies(page, value);
+    console.log(movies);
+    this.setState({
+      page: 1,
+      filter: value,
+      movies: movies.results,
+      totalPages: movies.total_pages
     })
   }
 
@@ -79,6 +92,9 @@ class Home extends Component {
     const { page, totalPages } = this.state;
     return (
       <div>
+        <SearchInput
+          searchFunction={this.searchMovie}
+        />
         <div className='list-movies-div'>
           {this.renderCardMovies()}
         </div>
