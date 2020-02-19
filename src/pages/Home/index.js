@@ -9,7 +9,7 @@ import { getMovies } from '../../services/movieService';
 
 import { genreFilterById } from '../../utils/genresFilter';
 import genres from '../../utils/genres';
-
+import upArrow from '../../res/images/up-arrow.png'
 import './style.css';
 
 class Home extends Component {
@@ -20,6 +20,7 @@ class Home extends Component {
       page: 1,
       totalPages: 1,
       filter: null,
+      buttonTop: false,
     }
   }
 
@@ -29,6 +30,28 @@ class Home extends Component {
     this.setState({
       movies: movies.results,
       totalPages: movies.total_pages
+    });
+    window.addEventListener('scroll', this.listenToScroll)
+  }
+
+  listenToScroll = () => {
+    const winScroll =
+    document.body.scrollTop || document.documentElement.scrollTop
+
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+
+    const scrolled = winScroll / height
+
+    let buttonTop = false;
+
+    if (scrolled > 0.025) {
+      buttonTop = true;
+    }
+
+    this.setState({
+      buttonTop
     });
   }
 
@@ -86,13 +109,13 @@ class Home extends Component {
   }
 
   render() {
-    const { page, totalPages } = this.state;
+    const { page, totalPages, buttonTop } = this.state;
     return (
       <div>
         <SearchInput
           searchFunction={this.searchMovie}
         />
-        <div className='list-movies-div'>
+        <div className="list-movies-div">
           {this.renderCardMovies()}
         </div>
         <div className="pagination-div">
@@ -101,6 +124,18 @@ class Home extends Component {
             value={page}
             numberPages={totalPages}
           />
+          {(buttonTop)
+            ? (
+              <button
+                className="float"
+                onClick={() => { window.scrollTo(0, 0) }}
+                title="Voltar ao topo"
+              >
+                <img src={upArrow} />
+              </button>
+            ) : null
+          }
+          
         </div>
       </div>
     );

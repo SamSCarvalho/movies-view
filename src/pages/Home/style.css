@@ -159,3 +159,24 @@
 .page-selected span:hover {
   opacity: 1;
 }
+
+.float {
+  position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#116193;
+  color:#FFF;
+  border-style: solid;
+  border-color: #05C4CE;
+	border-radius:50px;
+  text-align:center;
+  cursor: pointer;
+}
+
+.float:hover {
+  outline-offset: none;
+  outline: none;
+  opacity: 0.8;
+}
