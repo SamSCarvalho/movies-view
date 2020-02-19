@@ -26,7 +26,6 @@ class Home extends Component {
   componentDidMount = async () => {
     const { page } = this.state;
     const movies = await getMovies(page);
-    console.log(movies)
     this.setState({
       movies: movies.results,
       totalPages: movies.total_pages
@@ -62,7 +61,6 @@ class Home extends Component {
   getMoreMovies = async (page) => {
     const { filter } = this.state;
     const movies = await getMovies(page, filter);
-    console.log(movies);
     this.setState({
       movies: movies.results
     })
@@ -71,7 +69,6 @@ class Home extends Component {
   searchMovie = async (value) => {
     const { page } = this.state;
     const movies = await getMovies(page, value);
-    console.log(movies);
     this.setState({
       page: 1,
       filter: value,

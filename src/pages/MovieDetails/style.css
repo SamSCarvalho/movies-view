@@ -1,0 +1,166 @@
+.div-card-details{
+  padding: 5%;
+}
+
+.card-details {
+  background-color: #F2F2F2; 
+}
+
+.header-card-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E6E6E6;
+  padding: 0% 3%;
+}
+
+.header-card-details h1 {
+  font-size: 3vh;
+  color: #116193;
+  font-family: Abel, sans-serif;
+  font-weight: 300;
+}
+
+.header-card-details time {
+  font-family: Abel, sans-serif;
+  font-weight: 100;
+  font-size: 2vh;
+  color: #A1A1A1;
+}
+
+.info-movie-details {
+  padding: 1% 3% 3%;
+  flex: 1;
+}
+
+.info-movie-row h2 {
+  flex: 1;
+  font-size: 2.4vh;
+  border-width: 1px;
+  color: #116193;
+  font-weight: 100;
+  font-family: Abel, sans-serif;
+  border-bottom-color: #05C4CE;
+  padding: 5px 0px;
+  border-bottom-style: solid;
+}
+
+.info-movie-row p {
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+}
+
+.info-movie-esp {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.info-movie-esp h3 {
+  font-size: 2vh;
+  color: #116193;
+  font-weight: 100;
+  font-family: Abel, sans-serif;
+}
+
+.esp-movie {
+  text-align: center;
+}
+
+.esp-movie p {
+  margin: 0px;
+}
+
+.esp-movie h3 {
+  margin: 3px 0px;
+}
+
+.info-movie-tags {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  margin: 5% 0% 0%;
+}
+
+.info-movie-score {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+
+.rating-circle-big {
+  width: 10vh;
+  height: 10vh;
+  background-color: #116193;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -33px;
+  margin-left: 15px;
+  border-width: 1vh;
+  border-style: solid;
+  border-color: #05C4CE;
+}
+
+.rating-circle-big span {
+  font-size: 4.5vh;
+  color: #05C4CE;
+  font-family: Abel, sans-serif;
+  font-weight: 100;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-content {
+    display: block;
+  }
+}
+
+.card-details-div-img {
+  height: 55vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-details-div-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+}
+
+.card-details-div-img img {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-details-div-img img {
+    height: auto;
+  }
+}
+
+.play-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-top: 60px;
+  height: 0;
+}
+
+.play-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+

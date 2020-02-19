@@ -1,6 +1,7 @@
 const slugify = (str) => {
   const map = {
       '-' : ' ',
+      // eslint-disable-next-line no-dupe-keys
       '-' : '_',
       'a' : 'á|à|ã|â|À|Á|Ã|Â',
       'e' : 'é|è|ê|É|È|Ê',

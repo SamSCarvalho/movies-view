@@ -6,7 +6,7 @@ import '../../style.css';
 const RatingScore = (props) => {
   const { rating } = props;
   return (
-    <div className="rating-circle">
+    <div className="rating-circle-big">
       <span>{(rating*10)}%</span>
     </div>
   )

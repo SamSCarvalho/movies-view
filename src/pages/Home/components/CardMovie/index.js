@@ -4,7 +4,7 @@ import history from '../../../../routes/history';
 import PropTypes from 'prop-types';
 
 import RatingScore from '../RatingScore';
-import TagGenre from '../TagGenre';
+import TagGenre from '../../../../components/TagGenre';
 
 
 import '../../style.css';
@@ -18,6 +18,7 @@ class CardMovie extends Component {
     overview: PropTypes.string,
     date: PropTypes.string,
     voteAverage: PropTypes.number,
+    genres: PropTypes.array,
   };
 
   static defaultProps = {
@@ -27,6 +28,7 @@ class CardMovie extends Component {
     posterPath: imageNotFound,
     date: '',
     voteAverage: 0,
+    genres: [],
   };
 
   renderTags = () => {

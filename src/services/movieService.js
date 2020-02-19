@@ -1,12 +1,8 @@
 import APIRequest from './client/movieApi';
-import genres from '../utils/genres';
-import { genreFilterByDescri } from '../utils/genresFilter';
 
 export const getMovie = async (id) => {
   const movies = await APIRequest(`/movie/${id}`, {
     params: {
-      sort_by: 'popularity.desc',
-      page: 1,
       language: 'pt-Br',
     }
   })
@@ -15,6 +11,15 @@ export const getMovie = async (id) => {
   });
 
   return movies;
+}
+
+export const getTrailerMovie = async (id) => {
+  const trailer = await APIRequest(`/movie/${id}/videos`,)
+  .then((response) => {
+    return response.data.results
+  })
+  
+  return trailer;
 }
 
 export const getGenres = async () => {
@@ -55,6 +60,7 @@ const discoverMovies = async (page, value) => {
       language: 'pt-Br',
       with_genres: value,
       include_adult: false,
+      include_video: true,
     }
   })
   .then((response) => {

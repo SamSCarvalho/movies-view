@@ -115,26 +115,6 @@
   padding-bottom: 20px;
 }
 
-.tag-genre {
-  background: #FFF;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 50px;
-  border-color: #116193;
-  border-width: 1px;
-  border-style: solid;
-  margin: 10px;
-  margin-left: 0px;
-  white-space: nowrap;
-}
-
-.tag-genre span {
-  font-size: 14px;
-  color: #116193;
-  font-family: Abel, sans-serif;
-}
-
 .pagination-div {
   display: flex;
   justify-content: center;

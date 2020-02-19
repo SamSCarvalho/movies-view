@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import history from '../../routes/history';
 
 import './style.css';
 
 const Header = (props) => {
   const { title }  = props;
   return (
-    <div className="header-page">
+    <div
+      className="header-page"
+      onClick={() => {
+        history.push('/')
+      }
+    }>
       <h1>{title}</h1>
     </div>
   );
