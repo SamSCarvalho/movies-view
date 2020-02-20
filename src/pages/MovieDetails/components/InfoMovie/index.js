@@ -81,7 +81,6 @@ class InfoMovie extends Component {
       language,
       status,
     } = this.props;
-    console.log(overview);
     let duration;
     if (runtime) {
       duration = minuteToHour(runtime);
