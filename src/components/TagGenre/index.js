@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { NOT_DEFINED } from '../../constants/system';
+
 import './style.css';
 
 const TagGenre = (props) => {
@@ -12,8 +14,12 @@ const TagGenre = (props) => {
   )
 }
 
-TagGenre.protoTypes = {
-  title: PropTypes.string
+TagGenre.propTypes = {
+  title: PropTypes.string,
 }
+
+TagGenre.defaultProps = {
+  title: NOT_DEFINED,
+};
 
 export default TagGenre;

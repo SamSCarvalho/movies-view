@@ -7,13 +7,19 @@ const RatingScore = (props) => {
   const { rating } = props;
   return (
     <div className="rating-circle">
-      <span>{(rating*10)}%</span>
+      <div>
+        <span>{(rating*10)}%</span>
+      </div>
     </div>
   )
 }
 
-RatingScore.protoTypes = {
-  title: PropTypes.number
+RatingScore.propTypes = {
+  title: PropTypes.number,
+}
+
+RatingScore.defaultProps = {
+  title: 0,
 }
 
 export default RatingScore;

@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+
+import { NOT_DEFINED } from '../../../../constants/system';
 
 import '../../style.css'
 
@@ -15,5 +18,15 @@ const HeaderCard = (props) => {
     </div>
   )
 }
+
+HeaderCard.propTypes = {
+  title: PropTypes.string,
+  date: PropTypes.instanceOf(Date),
+}
+
+HeaderCard.defaultProps = {
+  title: NOT_DEFINED,
+  date: new Date(),
+};
 
 export default HeaderCard;

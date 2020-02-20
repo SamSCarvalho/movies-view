@@ -101,10 +101,10 @@ class Home extends Component {
   }
 
   changePage = async (page) => {
+    await this.getMoreMovies(page);
     this.setState({
       page
     });
-    await this.getMoreMovies(page);
     window.scrollTo(0, 0)
   }
 
@@ -131,7 +131,7 @@ class Home extends Component {
                 onClick={() => { window.scrollTo(0, 0) }}
                 title="Voltar ao topo"
               >
-                <img src={upArrow} />
+                <img src={upArrow} alt="" />
               </button>
             ) : null
           }

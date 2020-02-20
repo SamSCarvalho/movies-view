@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import HeaderCard from '../HeaderCard';
 import InfoMovie from '../InfoMovie';
 
@@ -8,6 +9,14 @@ import { getMovie } from '../../../../services/movieService';
 import '../../style.css';
 
 class CardDetails extends Component {
+  static propTypes = {
+    idMovie: PropTypes.number,
+  };
+
+  static defaultProps = {
+    idMovie: 0,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +34,7 @@ class CardDetails extends Component {
 
   render() {
     const { movie } = this.state;
+    console.log(movie);
     if (!movie) return null;
     const path = (movie.poster_path) ? `${IMG_URL}${movie.poster_path}` : undefined;
     return(

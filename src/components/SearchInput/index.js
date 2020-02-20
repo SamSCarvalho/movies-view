@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { PLACEHOLDER } from '../../constants/searchInput';
 
 import './style.css';
 
 class SearchInput extends Component {
+  static propTypes = {
+    searchFunction: PropTypes.func,
+  };
+
+  static defaultProps = {
+    searchFunction: () => {},
+  };
 
   handleChangeSearch(event) {
     const { searchFunction } = this.props;

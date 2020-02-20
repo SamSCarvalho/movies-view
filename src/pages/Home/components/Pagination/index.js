@@ -8,10 +8,14 @@ import '../../style.css';
 class Pagination extends Component {
   static propTypes = {
     value: PropTypes.number,
+    changePage: PropTypes.func,
+    numberPages: PropTypes.number,
   };
 
   static defaultProps = {
     value: 1,
+    changePage: () => {},
+    numberPages: 1,
   };
 
   render() {
@@ -25,7 +29,9 @@ class Pagination extends Component {
       if (i === value) {
         pages.push(
           <div key={i} className="page-selected">
-            <span>{i}</span>
+            <div>
+              <span>{i}</span>
+            </div>
           </div>
         )
       } else{

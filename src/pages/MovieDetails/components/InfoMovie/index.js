@@ -6,15 +6,20 @@ import RatingScore from '../RatingScore';
 import {
   INFO,
   SINOPSE,
-  SITUACAO,
-  IDIOMA,
-  DURACAO,
-  ORCAMENTO,
-  RECEITA,
-  LUCRO
+  SITUATION,
+  LANGUAGE,
+  DURATION,
+  BUDGET,
+  REVENUE,
+  PROFIT
 } from '../../../../constants/infoMovie';
+import {
+  NOT_DEFINED,
+} from '../../../../constants/system';
 import { minuteToHour } from '../../../../utils/timeConvert';
 import convertMoney from '../../../../utils/convertMoney';
+import languageISO from '../../../../utils/language';
+import getStatusMovie from '../../../../utils/getStatusMovie';
 
 import '../../style.css'
 
@@ -24,13 +29,19 @@ class InfoMovie extends Component {
     rating: PropTypes.number,
     genres: PropTypes.array,
     runtime: PropTypes.number,
+    budget: PropTypes.string,
+    language: PropTypes.string,
+    status: PropTypes.string,
   };
 
   static defaultProps = {
-    overview: '',
+    overview: NOT_DEFINED,
     rating: 0,
     runtime: 0,
     genres: [],
+    budget: NOT_DEFINED,
+    language: NOT_DEFINED,
+    status: NOT_DEFINED,
   };
 
   renderInfo = (title, value) => (
@@ -64,8 +75,11 @@ class InfoMovie extends Component {
       runtime,
       revenue,
       budget,
+      language,
+      status,
     } = this.props;
     const duration = minuteToHour(runtime);
+    const statusMovie = getStatusMovie(status);
 
     return(
       <div className="info-movie-details">
@@ -76,12 +90,12 @@ class InfoMovie extends Component {
         <div className="info-movie-row">
           <h2>{INFO}</h2>
           <div className="info-movie-esp">
-            {this.renderInfo(SITUACAO, 'Lançado')}
-            {this.renderInfo(IDIOMA, 'Inglês')}
-            {this.renderInfo(DURACAO, duration)}
-            {this.renderInfo(ORCAMENTO, convertMoney(budget))}
-            {this.renderInfo(RECEITA, convertMoney(revenue))}
-            {this.renderInfo(LUCRO, convertMoney(revenue-budget))}
+            {this.renderInfo(SITUATION, statusMovie)}
+            {this.renderInfo(LANGUAGE, languageISO["pt-BR"].languages[language])}
+            {this.renderInfo(DURATION, duration)}
+            {this.renderInfo(BUDGET, convertMoney(budget))}
+            {this.renderInfo(REVENUE, convertMoney(revenue))}
+            {this.renderInfo(PROFIT, convertMoney(revenue-budget))}
           </div>
         </div>
         <div className="info-movie-tags">

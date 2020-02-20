@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { YOUTUBE_URL } from '../../../../constants/api';
 
 const PlayVideo = (props) => {
@@ -23,5 +24,13 @@ const PlayVideo = (props) => {
     </div>
   )
 }
+
+PlayVideo.propTypes = {
+  id: PropTypes.number,
+}
+
+PlayVideo.defaultProps = {
+  id: 0,
+};
 
 export default PlayVideo;

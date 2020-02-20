@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import history from '../../routes/history';
 
+import { TITLE_APP } from '../../constants/system';
+
 import './style.css';
 
 const Header = (props) => {
@@ -18,8 +20,13 @@ const Header = (props) => {
   );
 }
 
-Header.protoTypes = {
-  title: PropTypes.string
+Header.propTypes = {
+  title: PropTypes.string,
 }
+
+Header.defaultProps = {
+  title: TITLE_APP,
+};
+
 
 export default Header;

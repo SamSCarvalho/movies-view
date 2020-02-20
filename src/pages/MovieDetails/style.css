@@ -20,6 +20,7 @@
   color: #116193;
   font-family: Abel, sans-serif;
   font-weight: 300;
+  margin-right: 10px;
 }
 
 .header-card-details time {
@@ -81,7 +82,7 @@
   display: flex;
   flex: 1;
   flex-wrap: wrap;
-  margin: 5% 0% 0%;
+  margin: 5% 30% 0% 0%;
 }
 
 .info-movie-score {
@@ -101,7 +102,17 @@
   align-items: center;
   margin-top: -33px;
   margin-left: 15px;
-  border-width: 1vh;
+  padding: 4px;
+}
+
+.rating-circle-big div {
+  width: 9vh;
+  height: 9vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 5px;
   border-style: solid;
   border-color: #05C4CE;
 }
