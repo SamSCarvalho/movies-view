@@ -10,11 +10,11 @@ import '../../style.css';
 
 class CardDetails extends Component {
   static propTypes = {
-    idMovie: PropTypes.number,
+    idMovie: PropTypes.string,
   };
 
   static defaultProps = {
-    idMovie: 0,
+    idMovie: undefined,
   };
 
   constructor(props) {
@@ -34,7 +34,6 @@ class CardDetails extends Component {
 
   render() {
     const { movie } = this.state;
-    console.log(movie);
     if (!movie) return null;
     const path = (movie.poster_path) ? `${IMG_URL}${movie.poster_path}` : undefined;
     return(

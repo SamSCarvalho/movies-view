@@ -29,7 +29,8 @@ class InfoMovie extends Component {
     rating: PropTypes.number,
     genres: PropTypes.array,
     runtime: PropTypes.number,
-    budget: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
     language: PropTypes.string,
     status: PropTypes.string,
   };
@@ -39,7 +40,8 @@ class InfoMovie extends Component {
     rating: 0,
     runtime: 0,
     genres: [],
-    budget: NOT_DEFINED,
+    budget: 0,
+    revenue: 0,
     language: NOT_DEFINED,
     status: NOT_DEFINED,
   };

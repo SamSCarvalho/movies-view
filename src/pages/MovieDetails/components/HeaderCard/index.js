@@ -8,7 +8,8 @@ import '../../style.css'
 
 const HeaderCard = (props) => {
   const { title, date } = props;
-  const dateRelease = moment(date).format("DD/MM/YYYY");
+  const dateMovie = (date) ? date : new Date();
+  const dateRelease = moment(dateMovie).format("DD/MM/YYYY");
   return(
     <div className="header-card-details">
       <h1>
@@ -21,12 +22,12 @@ const HeaderCard = (props) => {
 
 HeaderCard.propTypes = {
   title: PropTypes.string,
-  date: PropTypes.instanceOf(Date),
+  date: PropTypes.string,
 }
 
 HeaderCard.defaultProps = {
   title: NOT_DEFINED,
-  date: new Date(),
+  date: undefined,
 };
 
 export default HeaderCard;

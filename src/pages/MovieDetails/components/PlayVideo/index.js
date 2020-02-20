@@ -26,11 +26,11 @@ const PlayVideo = (props) => {
 }
 
 PlayVideo.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
 }
 
 PlayVideo.defaultProps = {
-  id: 0,
+  id: undefined,
 };
 
 export default PlayVideo;
