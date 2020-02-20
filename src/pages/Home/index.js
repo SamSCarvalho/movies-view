@@ -102,7 +102,6 @@ class Home extends Component {
   searchMovie = async (value) => {
     const { page } = this.state;
     const movies = await getMovies(page, value);
-    console.log(movies);
     this.setState({
       page: 1,
       filter: value,
