@@ -21,6 +21,7 @@ class Home extends Component {
       totalPages: 1,
       filter: null,
       buttonTop: false,
+      ready: false,
     }
   }
 
@@ -29,7 +30,8 @@ class Home extends Component {
     const movies = await getMovies(page);
     this.setState({
       movies: movies.results,
-      totalPages: movies.total_pages
+      totalPages: movies.total_pages,
+      ready: true,
     });
     window.addEventListener('scroll', this.listenToScroll)
   }
@@ -77,6 +79,14 @@ class Home extends Component {
           )
         }
       });
+    } else {
+      return (
+        <div className="not-found-movie">
+          <h1>
+            Nenhum filme encontrado
+          </h1>
+        </div>
+      )
     }
     return moviesCard;
   }
@@ -109,34 +119,39 @@ class Home extends Component {
   }
 
   render() {
-    const { page, totalPages, buttonTop } = this.state;
+    const { page, totalPages, buttonTop, ready } = this.state;
     return (
       <div>
         <SearchInput
           searchFunction={this.searchMovie}
         />
-        <div className="list-movies-div">
-          {this.renderCardMovies()}
-        </div>
-        <div className="pagination-div">
-          <Pagination
-            changePage={this.changePage}
-            value={page}
-            numberPages={totalPages}
-          />
-          {(buttonTop)
-            ? (
-              <button
-                className="float"
-                onClick={() => { window.scrollTo(0, 0) }}
-                title="Voltar ao topo"
-              >
-                <img src={upArrow} alt="" />
-              </button>
-            ) : null
-          }
-          
-        </div>
+        {(ready)
+          ? (
+            <div>
+              <div className="list-movies-div">
+                {this.renderCardMovies()}
+              </div>
+              <div className="pagination-div">
+                <Pagination
+                  changePage={this.changePage}
+                  value={page}
+                  numberPages={totalPages}
+                />
+                {(buttonTop)
+                  ? (
+                    <button
+                      className="float"
+                      onClick={() => { window.scrollTo(0, 0) }}
+                      title="Voltar ao topo"
+                    >
+                      <img src={upArrow} alt="" />
+                    </button>
+                  ) : null
+                }
+              </div>
+            </div>
+          ) : null
+        }
       </div>
     );
   }

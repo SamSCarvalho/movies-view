@@ -1,3 +1,15 @@
+.not-found-movie{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.not-found-movie h1 {
+  font-size: 6vh;
+  color: #CCC;
+  font-family: Abel, sans-serif;
+}
+
 .list-movies-div {
   padding: 10%;
   padding-bottom: 0%;
