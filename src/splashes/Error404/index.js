@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+import './style.css';
+
 class Error404 extends Component {
   render() {
     return (
-      <div>
-        <h1>404</h1>
+      <div className="not-found-page">
+        <h1>
+          Página não encontrada
+        </h1>
       </div>
     );
   }

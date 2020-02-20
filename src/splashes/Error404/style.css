@@ -1,0 +1,11 @@
+.not-found-page{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.not-found-page h1 {
+  font-size: 6vh;
+  color: #CCC;
+  font-family: Abel, sans-serif;
+}
