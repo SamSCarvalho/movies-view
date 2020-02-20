@@ -6,3 +6,4 @@ export const BUDGET = 'Orçamento';
 export const DURATION = 'Duração';
 export const REVENUE = 'Receita';
 export const PROFIT = 'Lucro';
+export const NOT_OVERVIEW = 'Sem uma sinopse definida para esse filme';

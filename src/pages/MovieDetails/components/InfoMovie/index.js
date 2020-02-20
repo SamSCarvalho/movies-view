@@ -11,7 +11,8 @@ import {
   DURATION,
   BUDGET,
   REVENUE,
-  PROFIT
+  PROFIT,
+  NOT_OVERVIEW
 } from '../../../../constants/infoMovie';
 import {
   NOT_DEFINED,
@@ -80,14 +81,20 @@ class InfoMovie extends Component {
       language,
       status,
     } = this.props;
-    const duration = minuteToHour(runtime);
+    console.log(overview);
+    let duration;
+    if (runtime) {
+      duration = minuteToHour(runtime);
+    } else {
+      duration = NOT_DEFINED;
+    }
     const statusMovie = getStatusMovie(status);
 
     return(
       <div className="info-movie-details">
         <div className="info-movie-row">
           <h2>{SINOPSE}</h2>
-          <p>{overview}</p>
+          <p>{(overview) ? overview : NOT_OVERVIEW}</p>
         </div>
         <div className="info-movie-row">
           <h2>{INFO}</h2>
