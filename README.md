@@ -2,7 +2,7 @@ Projeto criado por Samuel Carvalho.
 
 ## Desafio - Movie Cubos
 
-No diretório do projeto execute o comando abaixo para compilar:
+No diretório do projeto execute o comando abaixo para instalar as depedências:
 ### `npm install`
 
 Configure o `.env` como pode ser visualizado no `.env.example` para poder acessar a api
