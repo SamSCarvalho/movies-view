@@ -1,6 +1,6 @@
 Projeto criado por Samuel Carvalho.
 
-## Desafio - Movie Cubos
+## Movies View
 
 No diretório do projeto execute o comando abaixo para instalar as depedências:
 ### `npm install`
